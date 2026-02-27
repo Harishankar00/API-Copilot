@@ -1,2 +1,23 @@
+# --- Python / Backend ---
+backend/venv/
 backend/.env
-backend/venv
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+*.sqlite3
+
+# --- Node / Frontend ---
+frontend/node_modules/
+frontend/.env
+frontend/dist/
+frontend/build/
+.npm
+npm-debug.log*
+
+# --- OS / Misc ---
+.DS_Store
+Thumbs.db

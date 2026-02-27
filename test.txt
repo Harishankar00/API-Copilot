@@ -1,0 +1,16 @@
+So like we need a food ordering thing but not super big like Swiggy just small local restaurants only one city for now users can browse restaurants filter by veg or non veg maybe price range also rating system but not sure if we implement rating v1.
+
+User login obviously signup login maybe google login later.
+
+Cart system add remove quantity. Payment integrate later for now maybe COD option only. But structure should allow payment later.
+
+Restaurant owner dashboard to update menu items price availability. Should not allow negative price lol.
+
+Delivery tracking not real time just order status like placed preparing out for delivery delivered.
+
+Admin panel to deactivate restaurant if violation.
+
+Edge:
+- What if restaurant closed but user tries to order?
+- What if item goes out of stock mid order?
+- What if duplicate orders submitted?
