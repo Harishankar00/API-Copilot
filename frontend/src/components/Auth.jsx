@@ -9,65 +9,72 @@ export default function Auth({ onLoginSuccess }) {
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Stop the page from reloading like it's 1999
+    e.preventDefault();
     setError('');
     setLoading(true);
 
     try {
       if (isLogin) {
         await login(email, password);
-        onLoginSuccess(); // Yell at the main app that we are officially in!
+        onLoginSuccess();
       } else {
         await signup(email, password);
-        alert("Signup successful! Now prove you remember your password and log in.");
-        setIsLogin(true); // Switch back to the login view
-        setPassword(''); // Clear the password for safety
+        alert("Signup successful! Now log in to prove it.");
+        setIsLogin(true);
+        setPassword('');
       }
     } catch (err) {
-      // If the backend yells at us, show the error
-      setError(err.response?.data?.detail || "Something went terribly wrong. Oops.");
+      setError(err.response?.data?.detail || "Something went wrong. Oops.");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div style={{ maxWidth: '400px', margin: '100px auto', padding: '30px', border: '2px solid #333', borderRadius: '10px', fontFamily: 'sans-serif', textAlign: 'center' }}>
-      <h2>{isLogin ? 'Welcome Back, Genius' : 'Join the SpecDraft Club'}</h2>
+    <div className="max-w-md mx-auto mt-20 p-8 bg-white rounded-2xl shadow-xl border border-pink-100 text-center animate-fade-in-up">
+      <div className="mb-6">
+        <span className="text-4xl">🚀</span>
+        <h2 className="text-2xl font-extrabold text-rose-900 mt-2">
+          {isLogin ? 'Welcome Back!' : 'Join SpecDraft'}
+        </h2>
+        <p className="text-slate-500 text-sm mt-1">
+          {isLogin ? 'Log in to generate some magic.' : 'Create an account to get started.'}
+        </p>
+      </div>
       
-      {error && <div style={{ color: 'red', marginBottom: '15px', fontWeight: 'bold' }}>{error}</div>}
+      {error && <div className="text-red-500 font-bold mb-4 bg-red-50 p-3 rounded-lg border border-red-100">{error}</div>}
       
-      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input 
           type="email" 
-          placeholder="Your Email (Make it real)" 
+          placeholder="Email Address" 
           value={email} 
           onChange={(e) => setEmail(e.target.value)} 
           required 
-          style={{ padding: '10px', fontSize: '16px', borderRadius: '5px', border: '1px solid #ccc' }}
+          className="w-full p-3 bg-pink-50 border border-pink-200 rounded-xl focus:ring-2 focus:ring-pink-400 focus:outline-none text-slate-700 placeholder-slate-400"
         />
         <input 
           type="password" 
-          placeholder="Password (Super secret)" 
+          placeholder="Password" 
           value={password} 
           onChange={(e) => setPassword(e.target.value)} 
           required 
-          style={{ padding: '10px', fontSize: '16px', borderRadius: '5px', border: '1px solid #ccc' }}
+          className="w-full p-3 bg-pink-50 border border-pink-200 rounded-xl focus:ring-2 focus:ring-pink-400 focus:outline-none text-slate-700 placeholder-slate-400"
         />
         <button 
           type="submit" 
           disabled={loading} 
-          style={{ padding: '12px', fontSize: '16px', cursor: 'pointer', backgroundColor: '#007BFF', color: 'white', border: 'none', borderRadius: '5px', fontWeight: 'bold' }}
+          className="w-full py-3 mt-2 bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white rounded-xl font-bold shadow-md transform transition hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          {loading ? 'Thinking about it...' : (isLogin ? 'Login' : 'Sign Up')}
+          {loading ? 'Thinking...' : (isLogin ? 'Login' : 'Sign Up')}
         </button>
       </form>
 
       <button 
         onClick={() => { setIsLogin(!isLogin); setError(''); }} 
-        style={{ marginTop: '20px', background: 'none', border: 'none', color: '#007BFF', cursor: 'pointer', textDecoration: 'underline', fontSize: '14px' }}
+        className="mt-6 text-pink-600 hover:text-pink-800 font-medium underline text-sm transition-colors"
       >
-        {isLogin ? "Don't have an account? Sign up here." : "Already have an account? Log in."}
+        {isLogin ? "Don't have an account? Sign up." : "Already have an account? Log in."}
       </button>
     </div>
   );

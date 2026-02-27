@@ -1,8 +1,7 @@
 import axios from 'axios';
 
 // Point this to your FastAPI backend
-const API_URL = 'http://localhost:7860';
-
+const API_URL = 'https://harishankar000-specdraft-api.hf.space';
 // Create an Axios instance
 const api = axios.create({
     baseURL: API_URL,

@@ -1,16 +1,1 @@
-So like we need a food ordering thing but not super big like Swiggy just small local restaurants only one city for now users can browse restaurants filter by veg or non veg maybe price range also rating system but not sure if we implement rating v1.
-
-User login obviously signup login maybe google login later.
-
-Cart system add remove quantity. Payment integrate later for now maybe COD option only. But structure should allow payment later.
-
-Restaurant owner dashboard to update menu items price availability. Should not allow negative price lol.
-
-Delivery tracking not real time just order status like placed preparing out for delivery delivered.
-
-Admin panel to deactivate restaurant if violation.
-
-Edge:
-- What if restaurant closed but user tries to order?
-- What if item goes out of stock mid order?
-- What if duplicate orders submitted?
+Okay so we need a mini HR portal for the company. Employees gotta log in obviously. They need a page to request time off, like picking the dates and writing a reason. Managers should have a dashboard to see all these requests and click approve or deny. Oh, and the system needs to shoot out an email to the employee when their request is approved. Wait, what happens if someone tries to request time off for a date that already passed? Make sure we handle that. Also, the HR admin needs to be able to add new employees to the system
